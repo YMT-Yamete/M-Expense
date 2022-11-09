@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,13 +20,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TRIP_NAME = "name";
     public static final String TRIP_DESTINATION = "destination";
     public static final String TRIP_DATE = "trip_date";
+    public static final String TOTAL_DAYS = "total_days";
+    public static final String TRAVEL_AGENCY = "travel_agency";
     public static final String TRIP_RISK_ASSESSMENT = "risk_assessment";
     public static final String TRIP_DESCRIPTION = "description";
-    public static final String TRIP_VALUE1 = "value1";
-    public static final String TRIP_VALUE2 = "value2";
-    public static final String TRIP_VALUE3 = "value3";
-    public static final String TRIP_NUMBER_VALUE1 = "num1";
-    public static final String TRIP_NUMBER_VALUE2 = "num2";
 
     private SQLiteDatabase database;
 
@@ -37,13 +35,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     " %s BIGINT," +
                     " %s INTEGER," +
                     " %s TEXT," +
-                    " %s TEXT," +
-                    " %s TEXT," +
-                    " %s TEXT," +
-                    " %s REAL," +
-                    " %s REAL)"
-    , TABLE_TRIP, TRIP_ID, TRIP_NAME, TRIP_DESTINATION, TRIP_DATE, TRIP_RISK_ASSESSMENT,TRIP_DESCRIPTION,
-            TRIP_VALUE1, TRIP_VALUE2, TRIP_VALUE3, TRIP_NUMBER_VALUE1, TRIP_NUMBER_VALUE2);
+                    " %s INTEGER," +
+                    " %s TEXT)"
+    , TABLE_TRIP, TRIP_ID, TRIP_NAME, TRIP_DESTINATION, TRIP_DATE, TOTAL_DAYS, TRAVEL_AGENCY, TRIP_RISK_ASSESSMENT,TRIP_DESCRIPTION);
 
 
     public static final String EXPENSE_ID = "id";
@@ -67,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     " %s TEXT," +
                     " %s TEXT," +
                     " %s TEXT," +
-                    " CONSTRAINT fk_trip FOREIGN KEY (%s) REFERENCES %s (%s) ON UPDATE CASCADE ON DELETE action)"
+                    " CONSTRAINT fk_trip FOREIGN KEY (%s) REFERENCES %s (%s) ON UPDATE CASCADE ON DELETE cascade)"
             , TABLE_EXPENSE, EXPENSE_ID, TRIP_FOREIGN_ID, EXPENSE_TYPE, EXPENSE_AMOUNT, EXPENSE_TIME, EXPENSE_COMMENT,
             EXPENSE_VALUE1, EXPENSE_VALUE2, EXPENSE_VALUE3,
             EXPENSE_ID, TABLE_TRIP, TRIP_ID );
@@ -92,21 +86,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public long saveTrip(String name, String destination, long date, int riskAssessment, String description,
-                         String val1, String val2, String val3, Double num1, Double num2){
+    public long saveTrip(String name, String destination, long date, String totalDays, String travelAgency, int riskAssessment, String description){
         long result =0;
-
         ContentValues rowValues =new ContentValues();
         rowValues.put(TRIP_NAME, name);
         rowValues.put(TRIP_DESTINATION, destination);
         rowValues.put(TRIP_DATE, date);
+        rowValues.put(TOTAL_DAYS, totalDays);
+        rowValues.put(TRAVEL_AGENCY, travelAgency);
         rowValues.put(TRIP_RISK_ASSESSMENT, riskAssessment);
         rowValues.put(TRIP_DESCRIPTION, description);
-        rowValues.put(TRIP_VALUE1, val1);
-        rowValues.put(TRIP_VALUE2, val2);
-        rowValues.put(TRIP_VALUE3, val3);
-        rowValues.put(TRIP_NUMBER_VALUE1, num1);
-        rowValues.put(TRIP_NUMBER_VALUE2, num2);
         result =database.insertOrThrow(TABLE_TRIP, null, rowValues);
         return result;
     }
@@ -118,14 +107,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         rowValues.put(TRIP_NAME, trip.getName());
         rowValues.put(TRIP_DESTINATION, trip.getDestination());
         rowValues.put(TRIP_DATE, trip.getDate());
+        rowValues.put(TOTAL_DAYS,trip.getTotalDays());
+        rowValues.put(TRAVEL_AGENCY, trip.getTravelAgency());
         rowValues.put(TRIP_RISK_ASSESSMENT, trip.isRiskAssessment()? 1 : 0);
         rowValues.put(TRIP_DESCRIPTION, trip.getDescription());
-        rowValues.put(TRIP_VALUE1, trip.getValue1());
-        rowValues.put(TRIP_VALUE2, trip.getValue2());
-        rowValues.put(TRIP_VALUE3, trip.getValue3());
-        rowValues.put(TRIP_NUMBER_VALUE1, trip.getNum1());
-        rowValues.put(TRIP_NUMBER_VALUE2, trip.getNum2());
-
         String where = "id=?";
         String values[] = {trip.getId() +""};
         result =database.update(TABLE_TRIP, rowValues, where, values);
@@ -187,13 +172,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getLong(3),
-                    cursor.getInt(4)==1,
+                    cursor.getString(4),
                     cursor.getString(5),
-                    cursor.getString(6),
-                    cursor.getString(7),
-                    cursor.getString(8),
-                    cursor.getDouble(9),
-                    cursor.getDouble(10)
+                    cursor.getInt(6)==1,
+                    cursor.getString(7)
             );
             results.add(trip);
             cursor.moveToNext( );

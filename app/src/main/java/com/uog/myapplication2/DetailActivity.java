@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -25,12 +26,16 @@ public class DetailActivity extends AppCompatActivity {
     private TextView txtName;
     private TextView txtDestination;
     private TextView txtDate;
+    private TextView txtTotalDays;
+    private TextView txtTravelAgency;
     private TextView txtRiskAssessment;
     private TextView txtDescription;
 
     String name;
     String destination;
     long date;
+    String totalDays;
+    String travelAgency;
     String riskAssessment;
     String description;
 
@@ -55,6 +60,8 @@ public class DetailActivity extends AppCompatActivity {
         txtName =findViewById(R.id.txtName);
         txtDestination =findViewById(R.id.txtDestination);
         txtDate =findViewById(R.id.txtDate);
+        txtTotalDays = findViewById(R.id.txtTotalDays);
+        txtTravelAgency = findViewById(R.id.txtTravelAgent);
         txtRiskAssessment =findViewById(R.id.txtRiskAssessment);
         txtDescription =findViewById(R.id.txtDescription);
 
@@ -63,11 +70,15 @@ public class DetailActivity extends AppCompatActivity {
             name = bundle.getString(EntryActivity.NAME);
             destination = bundle.getString(EntryActivity.DESTINATION);
             date = bundle.getLong(EntryActivity.DATE);
+            totalDays = bundle.getString(EntryActivity.TOTAL_DAYS);
+            travelAgency = bundle.getString(EntryActivity.TRAVEL_AGENCY);
             riskAssessment = bundle.getString(EntryActivity.RISK_ASSESSMENT);
             description = bundle.getString(EntryActivity.DESCRIPTION);
 
             txtName.setText(name);
             txtDestination.setText(destination);
+            txtTotalDays.setText(totalDays);
+            txtTravelAgency.setText(travelAgency);
             txtRiskAssessment.setText(riskAssessment);
             txtDescription.setText(description);
             Date selectedDate =new Date( date );
@@ -76,11 +87,6 @@ public class DetailActivity extends AppCompatActivity {
 
             try {
                 id =bundle.getInt(EntryActivity.ID, 0);
-                value1 =bundle.getString(EntryActivity.VALUE1);
-                value2 =bundle.getString(EntryActivity.VALUE2);
-                value3 =bundle.getString(EntryActivity.VALUE3);
-                num1 =bundle.getDouble(EntryActivity.NUM1, 0);
-                num2 =bundle.getDouble(EntryActivity.NUM2, 0);
             }catch (Exception e){}
 
         }
@@ -92,21 +98,17 @@ public class DetailActivity extends AppCompatActivity {
                 DatabaseHelper database =new DatabaseHelper(getBaseContext());
                 long result =0;
                 if( id ==0) {
-                    result = database.saveTrip(name, destination, date, riskAssessment.equalsIgnoreCase("Yes") ? 1 : 0, description,
-                            null, null, null, null, null);
+                    result = database.saveTrip(name, destination, date, totalDays, travelAgency,riskAssessment.equalsIgnoreCase("Yes") ? 1 : 0, description);
                 }else{
                     Trip trip =new Trip(
                             id,
                             name,
                             destination,
                             date,
+                            totalDays,
+                            travelAgency,
                             riskAssessment.equalsIgnoreCase("Yes"),
-                            description,
-                            value1,
-                            value2,
-                            value3,
-                            num1 ==0? null : num1,
-                            num2 ==0? null : num2
+                            description
                     );
                     result =database.updateTrip(trip);
                 }

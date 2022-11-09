@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -25,23 +26,21 @@ import java.util.Date;
 
 public class EntryActivity extends AppCompatActivity {
 
-
     public static final String NAME = "name";
     public static final String DESTINATION = "destination";
     public static final String DATE = "date";
+    public static final String TOTAL_DAYS = "totalDays";
+    public static final String TRAVEL_AGENCY = "travelAgency";
     public static final String RISK_ASSESSMENT = "riskAssessment";
     public static final String DESCRIPTION = "description";
 
     public static final String ID = "id";
-    public static final String VALUE1 ="value1";
-    public static final String VALUE2 ="value2";
-    public static final String VALUE3 ="value3";
-    public static final String NUM1 ="num1";
-    public static final String NUM2 ="num2";
 
     private EditText txtName;
     private EditText txtDestination;
     private TextView txtDate;
+    private EditText txtTotalDays;
+    private EditText txtTravelAgency;
     private Button btnDateChooser;
     private RadioButton rbtnYes;
     private RadioButton rbtnNo;
@@ -66,6 +65,8 @@ public class EntryActivity extends AppCompatActivity {
         txtName =findViewById(R.id.txtName);
         txtDestination =findViewById(R.id.txtDestination);
         txtDate =findViewById(R.id.txtDate);
+        txtTotalDays = findViewById(R.id.txtTotalDays);
+        txtTravelAgency = findViewById(R.id.txtTravelAgency);
         btnDateChooser =findViewById(R.id.btnDateChooser);
         rbtnYes =findViewById(R.id.rbtnYes);
         rbtnNo =findViewById(R.id.rbtnNo);
@@ -96,7 +97,8 @@ public class EntryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name =txtName.getText().toString();
                 String destination =txtDestination.getText().toString();
-                //String date = selectedDate;
+                String totalDays = txtTotalDays.getText().toString();
+                String travelAgency = txtTravelAgency.getText().toString();
                 String riskAssessment = rbtnYes.isChecked()? "Yes" : "No";
                 String description =txtDescription.getText().toString();
                 boolean result =isValid( name, destination, selectedDate !=null? selectedDate.toString() : null );
@@ -105,16 +107,13 @@ public class EntryActivity extends AppCompatActivity {
                     intent.putExtra(EntryActivity.NAME, name);
                     intent.putExtra(EntryActivity.DESTINATION, destination);
                     intent.putExtra(EntryActivity.DATE, selectedDate.getTime());
+                    intent.putExtra(EntryActivity.TOTAL_DAYS, totalDays);
+                    intent.putExtra(EntryActivity.TRAVEL_AGENCY, travelAgency);
                     intent.putExtra(EntryActivity.RISK_ASSESSMENT, riskAssessment);
                     intent.putExtra(EntryActivity.DESCRIPTION, description);
 
                     // for updating
-                    intent.putExtra(EntryActivity.ID, trip !=null? trip.getId() : 0);
-                    intent.putExtra(EntryActivity.VALUE1, trip !=null? trip.getValue1() : "");
-                    intent.putExtra(EntryActivity.VALUE2, trip !=null? trip.getValue2() : "");
-                    intent.putExtra(EntryActivity.VALUE3, trip !=null? trip.getValue3() : "");
-                    intent.putExtra(EntryActivity.NUM1, trip !=null? trip.getNum1() : 0);
-                    intent.putExtra(EntryActivity.NUM2, trip !=null? trip.getNum2() : 0);
+                    intent.putExtra(EntryActivity.ID, trip !=null? trip.getId() : 0);;
                     startActivity(intent);
                 }
             }
@@ -163,18 +162,22 @@ public class EntryActivity extends AppCompatActivity {
                     bundle.getString(EntryActivity.NAME),
                     bundle.getString(EntryActivity.DESTINATION),
                     bundle.getLong(EntryActivity.DATE),
+                    bundle.getString(EntryActivity.TOTAL_DAYS),
+                    bundle.getString(EntryActivity.TRAVEL_AGENCY),
                     bundle.getBoolean(EntryActivity.RISK_ASSESSMENT),
-                    bundle.getString(EntryActivity.DESCRIPTION),
-
-                    bundle.getString(EntryActivity.VALUE1),
-                    bundle.getString(EntryActivity.VALUE2),
-                    bundle.getString(EntryActivity.VALUE3),
-                    bundle.getDouble(EntryActivity.NUM1, 0),
-                    bundle.getDouble(EntryActivity.NUM2, 0)
+                    bundle.getString(EntryActivity.DESCRIPTION)
             );
+            for (String key : bundle.keySet())
+            {
+                Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
+            }
+//            Log.i("Testing", "total Days: " + bundle.getString(EntryActivity.TOTAL_DAYS));
+//            Log.i("Testing", "travel Agent: " + bundle.getString(EntryActivity.TRAVEL_AGENCY));
 
             txtName.setText(trip.getName());
             txtDestination.setText(trip.getDestination());
+            txtTotalDays.setText(trip.getTotalDays());
+            txtTravelAgency.setText(trip.getTravelAgency());
             if( trip.isRiskAssessment() )
                 rbtnYes.setChecked(true);
             else

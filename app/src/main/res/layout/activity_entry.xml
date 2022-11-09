@@ -63,6 +63,32 @@
                 android:text="Select date" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Days" />
+
+        <EditText
+            android:id="@+id/txtTotalDays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number|textPersonName" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Travel Agency" />
+
+        <EditText
+            android:id="@+id/txtTravelAgency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

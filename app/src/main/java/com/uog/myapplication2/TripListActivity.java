@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -87,7 +88,6 @@ public class TripListActivity extends AppCompatActivity {
             public void onItemClick(int position, View v, long id) {
                 if( id == R.id.btnTripEdit){
                     updateTrip( position );
-
                 }else if( id == R.id.btnTripRemove ){
                     removeTrip(position);
                 }else if( id == R.id.btnTripExpense ){
@@ -139,16 +139,15 @@ public class TripListActivity extends AppCompatActivity {
         intent.putExtra(EntryActivity.NAME, trip.getName());
         intent.putExtra(EntryActivity.DESTINATION, trip.getDestination());
         intent.putExtra(EntryActivity.DATE, trip.getDate());
+        intent.putExtra(EntryActivity.TOTAL_DAYS, trip.getTotalDays());
+        intent.putExtra(EntryActivity.TRAVEL_AGENCY, trip.getTravelAgency());
         intent.putExtra(EntryActivity.RISK_ASSESSMENT, trip.isRiskAssessment());
         intent.putExtra(EntryActivity.DESCRIPTION, trip.getDescription());
 
+        Log.i("Testing",trip.getTotalDays());
+        Log.i("Testing",trip.getTravelAgency());
         // for updating
         intent.putExtra(EntryActivity.ID, trip !=null? trip.getId() : 0);
-        intent.putExtra(EntryActivity.VALUE1, trip !=null? trip.getValue1() : "");
-        intent.putExtra(EntryActivity.VALUE2, trip !=null? trip.getValue2() : "");
-        intent.putExtra(EntryActivity.VALUE3, trip !=null? trip.getValue3() : "");
-        intent.putExtra(EntryActivity.NUM1, trip !=null? trip.getNum1() : 0);
-        intent.putExtra(EntryActivity.NUM2, trip !=null? trip.getNum2() : 0);
         startActivity(intent);
     }
 
@@ -167,19 +166,6 @@ public class TripListActivity extends AppCompatActivity {
 
     private void tripExpense(int position){}
     private void tripDetail(int position){}
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        if (requestCode == SEARCH_CRITERIA_REQUEST_CODE) {
-//            if (resultCode == RESULT_OK) {
-//                String name = data.getStringExtra(EntryActivity.NAME);
-//                String destination = data.getStringExtra(EntryActivity.DESTINATION);
-//                long date = data.getLongExtra(EntryActivity.DATE, 0);
-//                advanceSearch( name, destination, new Date(date) );
-//            }
-//        }
-//        super.onActivityResult(requestCode, resultCode, data);
-//    }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
