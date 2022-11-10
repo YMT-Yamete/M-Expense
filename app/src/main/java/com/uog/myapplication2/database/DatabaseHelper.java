@@ -64,7 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     " CONSTRAINT fk_trip FOREIGN KEY (%s) REFERENCES %s (%s) ON UPDATE CASCADE ON DELETE cascade)"
             , TABLE_EXPENSE, EXPENSE_ID, TRIP_FOREIGN_ID, EXPENSE_TYPE, EXPENSE_AMOUNT, EXPENSE_TIME, EXPENSE_COMMENT,
             EXPENSE_VALUE1, EXPENSE_VALUE2, EXPENSE_VALUE3,
-            EXPENSE_ID, TABLE_TRIP, TRIP_ID );
+            TRIP_FOREIGN_ID, TABLE_TRIP, TRIP_ID );
 
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, 1);
@@ -178,6 +178,74 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     cursor.getString(7)
             );
             results.add(trip);
+            cursor.moveToNext( );
+        }
+        cursor.close();
+        return results;
+    }
+
+    public List<Expenses> searchExpenses( int tripId ) throws Exception{
+        Cursor cursor = null;
+        String query ="SELECT * FROM " + TABLE_EXPENSE
+                +" WHERE " + TRIP_FOREIGN_ID +"=" + tripId;
+
+        List<Expenses> results =new ArrayList<>();
+        cursor = database.rawQuery( query, null );
+        cursor.moveToFirst( );
+        while( !cursor.isAfterLast() ){
+            Expenses expenses =new Expenses(
+                    cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getString(2),
+                    cursor.getDouble(3),
+                    cursor.getLong(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8)
+            );
+            results.add(expenses);
+            cursor.moveToNext( );
+        }
+        cursor.close();
+        return results;
+    }
+
+    public long deleteExpense(int id){
+        long result =0;
+        String where = "id=?";
+        String values[] = { String.valueOf(id) };
+        result =database.delete(TABLE_EXPENSE, where, values);
+        return result;
+    }
+
+    public List<TripExportData> exportTrip() throws Exception{
+        Cursor cursor = null;
+        String query ="SELECT " +
+                " t." + TRIP_NAME +"," +
+                " t." + TRIP_DESTINATION +"," +
+                " t." + TRIP_DATE + "," +
+                " e." + EXPENSE_TYPE + "," +
+                " e." + EXPENSE_AMOUNT + "," +
+                " e." + EXPENSE_TIME + "," +
+                " e." + EXPENSE_COMMENT +
+                " FROM " + TABLE_TRIP +" t" +
+                " JOIN " + TABLE_EXPENSE +" e ON e." + TRIP_FOREIGN_ID +"=t." + TRIP_ID;
+
+        List<TripExportData> results =new ArrayList<>();
+        cursor = database.rawQuery( query, null );
+        cursor.moveToFirst( );
+        while( !cursor.isAfterLast() ){
+            TripExportData tripExportData =new TripExportData(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getLong(2),
+                    cursor.getString(3),
+                    cursor.getDouble(4),
+                    cursor.getLong(5),
+                    cursor.getString(6)
+            );
+            results.add(tripExportData);
             cursor.moveToNext( );
         }
         cursor.close();

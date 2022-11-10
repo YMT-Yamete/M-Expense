@@ -16,13 +16,27 @@
             android:exported="false" />
         <activity
             android:name=".EntryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".TripDetailActivity"/>
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".AdvanceSearchActivity"
-            android:exported="false" />
+            android:name=".ExpenseEntryActivity"
+            android:exported="false"
+            android:parentActivityName=".ExpenseListActivity" />
+        <activity
+            android:name=".ExpenseListActivity"
+            android:exported="false"
+            android:parentActivityName=".TripDetailActivity" />
+        <activity
+            android:name=".TripDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".TripDetailActivity" />
+        <activity
+            android:name=".TripDataUploadActivity"
+            android:exported="false"
+            android:parentActivityName=".TripDetailActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="false"

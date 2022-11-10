@@ -31,10 +31,11 @@ import java.util.List;
 
 
 public class TripListActivity extends AppCompatActivity {
-    private List<Trip> tripList =new ArrayList<>();
+    private List<Trip> tripList = new ArrayList<>();
     private EditText txtSearch;
     private ImageButton btnSearch, btnAdvance;
     private FloatingActionButton fabAddExpense;
+    private ImageButton btnUpload;
     private RecyclerView recyclerView;
     private static final int SEARCH_CRITERIA_REQUEST_CODE =1;
     private TripListAdapter adapter;
@@ -48,6 +49,7 @@ public class TripListActivity extends AppCompatActivity {
         btnSearch =findViewById(R.id.btnSearch);
         btnAdvance =findViewById(R.id.btnAdvance);
         fabAddExpense =findViewById(R.id.fabAddExpense);
+        btnUpload =findViewById(R.id.btnUpload);
         recyclerView =findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -79,6 +81,13 @@ public class TripListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity( new Intent( getApplicationContext(), EntryActivity.class ) );
+            }
+        });
+
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent( getApplicationContext(), TripDataUploadActivity.class ) );
             }
         });
 
@@ -164,8 +173,26 @@ public class TripListActivity extends AppCompatActivity {
         }
     }
 
-    private void tripExpense(int position){}
-    private void tripDetail(int position){}
+    private void tripExpense(int position){
+        Trip trip =tripList.get(position);
+        Intent intent = new Intent(getApplicationContext(), ExpenseListActivity.class);
+        intent.putExtra(EntryActivity.ID, trip.getId());
+        startActivity( intent );
+    }
+
+    private void tripDetail(int position){
+        Trip trip =tripList.get(position);
+        Intent intent = new Intent( getApplicationContext(), TripDetailActivity.class );
+        intent.putExtra(EntryActivity.NAME, trip.getName());
+        intent.putExtra(EntryActivity.DESTINATION, trip.getDestination());
+        intent.putExtra(EntryActivity.DATE, trip.getDate());
+        intent.putExtra(EntryActivity.RISK_ASSESSMENT, trip.isRiskAssessment());
+        intent.putExtra(EntryActivity.DESCRIPTION, trip.getDescription());
+
+        // for updating
+        intent.putExtra(EntryActivity.ID, trip !=null? trip.getId() : 0);
+        startActivity(intent);
+    }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),

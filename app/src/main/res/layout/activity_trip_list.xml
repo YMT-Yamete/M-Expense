@@ -22,7 +22,7 @@
                 android:id="@+id/txtSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.7"
+                android:layout_weight="0.55"
                 android:ems="10"
                 android:hint="Search"
                 android:inputType="textPersonName"
@@ -44,6 +44,15 @@
                 android:layout_weight="0.15"
                 android:backgroundTint="#02FFFFFF"
                 app:srcCompat="?android:attr/actionModeFindDrawable"
+                app:tint="#000000" />
+
+            <ImageButton
+                android:id="@+id/btnUpload"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.15"
+                android:backgroundTint="#02FFFFFF"
+                app:srcCompat="@android:drawable/ic_menu_upload"
                 app:tint="#000000" />
 
         </LinearLayout>

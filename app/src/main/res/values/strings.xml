@@ -14,7 +14,7 @@
     <string name="activity_entry_destination">Destination</string>
     <string name="activity_entry_risk_assessment">Require risk assessment</string>
 
-    <string name="url">https://gelivery-secure-975843425.ap-southeast-1.elb.amazonaws.com/m-expense/olympic/</string>
+    <string name="url">https://gelivery-secure-975843425.ap-southeast-1.elb.amazonaws.com/m-expense/expense/</string>
     <string name="json">
         {\"eventName\":\"mens 100 metres\",
         \"resultList\":[{\"medalColour\":\"bronze\",
