@@ -178,7 +178,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     cursor.getString(7)
             );
             results.add(trip);
-            cursor.moveToNext( );
+            cursor.moveToNext();
         }
         cursor.close();
         return results;

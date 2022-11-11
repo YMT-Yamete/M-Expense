@@ -131,6 +131,21 @@ public class TripListActivity extends AppCompatActivity {
         searchTask.execute( name, destination, date.toString() );
     }
 
+    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        String name = data.getStringExtra(EntryActivity.NAME);
+                        String destination = data.getStringExtra(EntryActivity.DESTINATION);
+                        long date = data.getLongExtra(EntryActivity.DATE, 0);
+                        advanceSearch(name, destination, new Date(date));
+                    }
+                }
+            });
+
     private void showTripListResult(List<Trip> trips){
         runOnUiThread(new Runnable() {
             @Override
@@ -186,6 +201,8 @@ public class TripListActivity extends AppCompatActivity {
         intent.putExtra(EntryActivity.NAME, trip.getName());
         intent.putExtra(EntryActivity.DESTINATION, trip.getDestination());
         intent.putExtra(EntryActivity.DATE, trip.getDate());
+        intent.putExtra(EntryActivity.TOTAL_DAYS, trip.getTotalDays());
+        intent.putExtra(EntryActivity.TRAVEL_AGENCY, trip.getTravelAgency());
         intent.putExtra(EntryActivity.RISK_ASSESSMENT, trip.isRiskAssessment());
         intent.putExtra(EntryActivity.DESCRIPTION, trip.getDescription());
 
@@ -193,20 +210,4 @@ public class TripListActivity extends AppCompatActivity {
         intent.putExtra(EntryActivity.ID, trip !=null? trip.getId() : 0);
         startActivity(intent);
     }
-
-    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
-                        // There are no request codes
-                        Intent data = result.getData();
-                        String name = data.getStringExtra(EntryActivity.NAME);
-                        String destination = data.getStringExtra(EntryActivity.DESTINATION);
-                        long date = data.getLongExtra(EntryActivity.DATE, 0);
-                        advanceSearch(name, destination, new Date(date));
-                    }
-                }
-            });
 }

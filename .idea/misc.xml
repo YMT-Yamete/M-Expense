@@ -4,7 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Hp/Desktop/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/activity_advance_search.xml" value="0.1334853090172239" />
+        <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/activity_detail.xml" value="0.2" />
+        <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/activity_entry.xml" value="0.264" />
+        <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/activity_expense_entry.xml" value="0.26132246376811596" />
+        <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/activity_expense_list.xml" value="0.1334853090172239" />
+        <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/activity_json_test.xml" value="0.1334853090172239" />
+        <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/activity_trip_data_upload.xml" value="0.1334853090172239" />
+        <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/activity_trip_detail.xml" value="0.264" />
         <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/activity_trip_list.xml" value="0.1334853090172239" />
+        <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/expense_data_list_item.xml" value="0.27032136105860116" />
+        <entry key="..\:/YMT/JavaDevelopment/M-Expense/app/src/main/res/layout/trip_data_list_item.xml" value="0.26132246376811596" />
         <entry key="..\:/YMT/JavaDevelopment/MyApplication2/app/src/main/res/layout/activity_advance_search.xml" value="0.2726449275362319" />
         <entry key="..\:/YMT/JavaDevelopment/MyApplication2/app/src/main/res/layout/activity_detail.xml" value="0.3941798941798942" />
         <entry key="..\:/YMT/JavaDevelopment/MyApplication2/app/src/main/res/layout/activity_entry.xml" value="0.264" />

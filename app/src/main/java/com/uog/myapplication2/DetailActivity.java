@@ -77,13 +77,13 @@ public class DetailActivity extends AppCompatActivity {
 
             txtName.setText(name);
             txtDestination.setText(destination);
-            txtTotalDays.setText(totalDays);
-            txtTravelAgency.setText(travelAgency);
+            txtTotalDays.setText((!totalDays.equals(""))?totalDays:"none");
+            txtTravelAgency.setText((!travelAgency.equals(""))?travelAgency:"none");
             txtRiskAssessment.setText(riskAssessment);
-            txtDescription.setText(description);
+            txtDescription.setText((!description.equals(""))?description:"none");
             Date selectedDate =new Date( date );
             String dateStr = new SimpleDateFormat(Constants.DATE_FORMAT).format(selectedDate);
-            txtDate.setText( "" + dateStr);
+            txtDate.setText(dateStr);
 
             try {
                 id =bundle.getInt(EntryActivity.ID, 0);

@@ -22,6 +22,10 @@
             android:name=".DetailActivity"
             android:exported="false" />
         <activity
+            android:name=".AdvanceSearchActivity"
+            android:exported="false"
+            android:parentActivityName=".ExpenseListActivity" />
+        <activity
             android:name=".ExpenseEntryActivity"
             android:exported="false"
             android:parentActivityName=".ExpenseListActivity" />

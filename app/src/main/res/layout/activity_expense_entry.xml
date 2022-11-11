@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:padding="15dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
@@ -58,7 +59,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.4"
-                android:drawableEnd="@android:drawable/star_big_on"
+                android:drawableEnd="@android:drawable/ic_menu_my_calendar"
                 android:text="Select date" />
         </LinearLayout>
 

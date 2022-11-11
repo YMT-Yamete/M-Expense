@@ -1,6 +1,7 @@
 package com.uog.myapplication2;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,6 +29,8 @@ public class TripDetailActivity extends AppCompatActivity {
     private TextView txtName;
     private TextView txtDestination;
     private TextView txtDate;
+    private TextView txtTotalDays;
+    private TextView txtTravelAgency;
     private TextView txtRiskAssessment;
     private TextView txtDescription;
     private RecyclerView recyclerViewExpense;
@@ -36,6 +39,8 @@ public class TripDetailActivity extends AppCompatActivity {
     private String name;
     private String destination;
     private long date;
+    private String totalDays;
+    private String travelAgency;
     private String riskAssessment;
     private String description;
     private String value1;
@@ -55,6 +60,8 @@ public class TripDetailActivity extends AppCompatActivity {
         txtName =findViewById(R.id.txtName);
         txtDestination =findViewById(R.id.txtDestination);
         txtDate =findViewById(R.id.txtDate);
+        txtTotalDays = findViewById(R.id.txtTotalDays);
+        txtTravelAgency = findViewById(R.id.txtTravelAgency);
         txtRiskAssessment =findViewById(R.id.txtRiskAssessment);
         txtDescription =findViewById(R.id.txtDescription);
         recyclerViewExpense =findViewById(R.id.recyclerViewExpense);
@@ -71,19 +78,27 @@ public class TripDetailActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if( bundle !=null ){
+            for (String key : bundle.keySet())
+            {
+                Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
+            }
             name = bundle.getString(EntryActivity.NAME);
             destination = bundle.getString(EntryActivity.DESTINATION);
             date = bundle.getLong(EntryActivity.DATE);
-            riskAssessment = bundle.getString(EntryActivity.RISK_ASSESSMENT);
+            totalDays = bundle.getString(EntryActivity.TOTAL_DAYS);
+            travelAgency = bundle.getString(EntryActivity.TRAVEL_AGENCY);
+            riskAssessment = (bundle.getBoolean(EntryActivity.RISK_ASSESSMENT))?"Yes":"No";
             description = bundle.getString(EntryActivity.DESCRIPTION);
 
             txtName.setText(name);
             txtDestination.setText(destination);
+            txtTotalDays.setText((totalDays!=null)?totalDays:"none");
+            txtTravelAgency.setText((travelAgency!=null)?travelAgency:"none");
             txtRiskAssessment.setText(riskAssessment);
-            txtDescription.setText(description);
+            txtDescription.setText((!description.equals(""))?description:"none");
             Date selectedDate =new Date( date );
             String dateStr = new SimpleDateFormat(Constants.DATE_FORMAT).format(selectedDate);
-            txtDate.setText("Date: " + dateStr);
+            txtDate.setText(dateStr);
 
             try {
                 id =bundle.getInt(EntryActivity.ID, 0);

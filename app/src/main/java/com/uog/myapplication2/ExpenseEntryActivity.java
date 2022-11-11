@@ -86,6 +86,8 @@ public class ExpenseEntryActivity extends AppCompatActivity {
                     database.close();
                     if( dbResult >0 ){
                         Toast.makeText(getBaseContext(), "Expense has been saved!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ExpenseEntryActivity.this, TripListActivity.class);
+                        startActivity(intent);
                         finish();
                     }
                 }
