@@ -1,12 +1,13 @@
-package com.uog.myapplication2;
+package com.uog.mexpense;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;
-import com.uog.myapplication2.database.Trip;
-import com.uog.myapplication2.util.Constants;
+import com.uog.mexpense.database.Trip;
+import com.uog.mexpense.util.Constants;
+import com.uog.mexpense.R;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;

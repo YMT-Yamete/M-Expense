@@ -1,4 +1,4 @@
-package com.uog.myapplication2;
+package com.uog.mexpense;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -7,11 +7,10 @@ import android.webkit.WebView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.uog.myapplication2.database.Expenses;
-import com.uog.myapplication2.database.TripExportData;
-import com.uog.myapplication2.util.Constants;
-import com.uog.myapplication2.util.ExpenseSearchTask;
-import com.uog.myapplication2.util.TripDataExportTask;
+import com.uog.mexpense.database.TripExportData;
+import com.uog.mexpense.util.Constants;
+import com.uog.mexpense.util.TripDataExportTask;
+import com.uog.mexpense.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

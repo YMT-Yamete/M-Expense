@@ -1,17 +1,15 @@
-package com.uog.myapplication2.adapter;
+package com.uog.mexpense.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.uog.myapplication2.R;
-import com.uog.myapplication2.database.Expenses;
-import com.uog.myapplication2.database.Trip;
+import com.uog.mexpense.database.Expenses;
+import com.uog.mexpense.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

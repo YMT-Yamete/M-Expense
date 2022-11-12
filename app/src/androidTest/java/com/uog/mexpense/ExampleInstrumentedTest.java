@@ -1,4 +1,4 @@
-package com.uog.myapplication2;
+package com.uog.mexpense;
 
 import android.content.Context;
 

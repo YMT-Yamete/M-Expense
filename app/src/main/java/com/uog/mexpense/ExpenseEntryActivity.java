@@ -1,4 +1,4 @@
-package com.uog.myapplication2;
+package com.uog.mexpense;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,18 +8,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.uog.myapplication2.database.DatabaseHelper;
-import com.uog.myapplication2.database.Trip;
-import com.uog.myapplication2.util.Constants;
-
-import org.json.JSONObject;
+import com.uog.mexpense.database.DatabaseHelper;
+import com.uog.mexpense.util.Constants;
+import com.uog.mexpense.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

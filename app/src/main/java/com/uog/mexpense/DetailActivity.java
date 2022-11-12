@@ -1,22 +1,21 @@
-package com.uog.myapplication2;
+package com.uog.mexpense;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.uog.myapplication2.database.DatabaseHelper;
-import com.uog.myapplication2.database.Trip;
-import com.uog.myapplication2.util.Constants;
+import com.uog.mexpense.database.DatabaseHelper;
+import com.uog.mexpense.database.Trip;
+import com.uog.mexpense.util.Constants;
+import com.uog.mexpense.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

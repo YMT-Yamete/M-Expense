@@ -6,7 +6,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.uog.myapplication2"
+        applicationId "com.uog.mexpense"
         minSdk 21
         targetSdk 31
         versionCode 1

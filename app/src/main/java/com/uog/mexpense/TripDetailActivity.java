@@ -1,9 +1,8 @@
-package com.uog.myapplication2;
+package com.uog.mexpense;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,12 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.uog.myapplication2.adapter.ExpenseListAdapter;
-import com.uog.myapplication2.database.DatabaseHelper;
-import com.uog.myapplication2.database.Expenses;
-import com.uog.myapplication2.database.Trip;
-import com.uog.myapplication2.util.Constants;
-import com.uog.myapplication2.util.ExpenseSearchTask;
+import com.uog.mexpense.adapter.ExpenseListAdapter;
+import com.uog.mexpense.database.DatabaseHelper;
+import com.uog.mexpense.database.Expenses;
+import com.uog.mexpense.util.Constants;
+import com.uog.mexpense.util.ExpenseSearchTask;
+import com.uog.mexpense.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -92,8 +91,8 @@ public class TripDetailActivity extends AppCompatActivity {
 
             txtName.setText(name);
             txtDestination.setText(destination);
-            txtTotalDays.setText((totalDays!=null)?totalDays:"none");
-            txtTravelAgency.setText((travelAgency!=null)?travelAgency:"none");
+            txtTotalDays.setText((!totalDays.equals(""))?totalDays:"none");
+            txtTravelAgency.setText((!travelAgency.equals(""))?travelAgency:"none");
             txtRiskAssessment.setText(riskAssessment);
             txtDescription.setText((!description.equals(""))?description:"none");
             Date selectedDate =new Date( date );

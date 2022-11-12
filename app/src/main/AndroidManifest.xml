@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uog.myapplication2">
+    package="com.uog.mexpense">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,42 +12,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication2">
         <activity
-            android:name=".JsonTestActivity"
+            android:name="com.uog.mexpense.JsonTestActivity"
             android:exported="false" />
         <activity
-            android:name=".EntryActivity"
+            android:name="com.uog.mexpense.EntryActivity"
             android:exported="false"
-            android:parentActivityName=".TripDetailActivity"/>
+            android:parentActivityName="com.uog.mexpense.TripDetailActivity"/>
         <activity
-            android:name=".DetailActivity"
+            android:name="com.uog.mexpense.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".AdvanceSearchActivity"
+            android:name="com.uog.mexpense.AdvanceSearchActivity"
             android:exported="false"
-            android:parentActivityName=".ExpenseListActivity" />
+            android:parentActivityName="com.uog.mexpense.ExpenseListActivity" />
         <activity
-            android:name=".ExpenseEntryActivity"
+            android:name="com.uog.mexpense.ExpenseEntryActivity"
             android:exported="false"
-            android:parentActivityName=".ExpenseListActivity" />
+            android:parentActivityName="com.uog.mexpense.ExpenseListActivity" />
         <activity
-            android:name=".ExpenseListActivity"
+            android:name="com.uog.mexpense.ExpenseListActivity"
             android:exported="false"
-            android:parentActivityName=".TripDetailActivity" />
+            android:parentActivityName="com.uog.mexpense.TripDetailActivity" />
         <activity
-            android:name=".TripDetailActivity"
+            android:name="com.uog.mexpense.TripDetailActivity"
             android:exported="false"
-            android:parentActivityName=".TripDetailActivity" />
+            android:parentActivityName="com.uog.mexpense.TripDetailActivity" />
         <activity
-            android:name=".TripDataUploadActivity"
+            android:name="com.uog.mexpense.TripDataUploadActivity"
             android:exported="false"
-            android:parentActivityName=".TripDetailActivity" />
+            android:parentActivityName="com.uog.mexpense.TripDetailActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.uog.mexpense.MainActivity"
             android:exported="false"
             android:label="@string/title_activity_entry"
             android:theme="@style/Theme.MyApplication2.NoActionBar" />
         <activity
-            android:name=".TripListActivity"
+            android:name="com.uog.mexpense.TripListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

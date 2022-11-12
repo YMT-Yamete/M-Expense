@@ -1,10 +1,10 @@
-package com.uog.myapplication2.util;
+package com.uog.mexpense.util;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.uog.myapplication2.database.DatabaseHelper;
-import com.uog.myapplication2.database.Trip;
+import com.uog.mexpense.database.DatabaseHelper;
+import com.uog.mexpense.database.Trip;
 
 import java.sql.Date;
 import java.util.ArrayList;

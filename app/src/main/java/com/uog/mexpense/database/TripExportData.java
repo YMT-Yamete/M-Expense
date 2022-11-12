@@ -1,4 +1,4 @@
-package com.uog.myapplication2.database;
+package com.uog.mexpense.database;
 
 public class TripExportData {
     private String name;

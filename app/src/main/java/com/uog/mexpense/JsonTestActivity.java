@@ -1,9 +1,11 @@
-package com.uog.myapplication2;
+package com.uog.mexpense;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.webkit.WebView;
+
+import com.uog.mexpense.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;

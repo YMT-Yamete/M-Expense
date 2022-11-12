@@ -1,4 +1,4 @@
-package com.uog.myapplication2;
+package com.uog.mexpense;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -19,12 +19,12 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.uog.myapplication2.adapter.TripListAdapter;
-import com.uog.myapplication2.database.DatabaseHelper;
-import com.uog.myapplication2.database.Trip;
-import com.uog.myapplication2.util.Constants;
-import com.uog.myapplication2.util.TripSearchTask;
-import java.text.SimpleDateFormat;
+import com.uog.mexpense.adapter.TripListAdapter;
+import com.uog.mexpense.database.DatabaseHelper;
+import com.uog.mexpense.database.Trip;
+import com.uog.mexpense.util.TripSearchTask;
+import com.uog.mexpense.R;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.uog.myapplication2;
+package com.uog.mexpense;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.uog.myapplication2.adapter.ExpenseListAdapter;
-import com.uog.myapplication2.database.DatabaseHelper;
-import com.uog.myapplication2.database.Expenses;
-import com.uog.myapplication2.util.ExpenseSearchTask;
+import com.uog.mexpense.adapter.ExpenseListAdapter;
+import com.uog.mexpense.database.DatabaseHelper;
+import com.uog.mexpense.database.Expenses;
+import com.uog.mexpense.util.ExpenseSearchTask;
+import com.uog.mexpense.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
